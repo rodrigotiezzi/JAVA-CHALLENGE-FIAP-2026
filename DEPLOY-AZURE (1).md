@@ -2,22 +2,8 @@
 
 ## Arquitetura
 
-```mermaid
-flowchart LR
-    Usuario((Usuário)) -->|HTTPS| Internet((Internet))
-    Internet --> DNS[DNS]
-    DNS --> WebApp
+<img width="1393" height="755" alt="image" src="https://github.com/user-attachments/assets/d014b145-9cc2-42e2-970a-810e3278481c" />
 
-    subgraph RG["Resource Group: rg-clyvo-care · southafricanorth"]
-        subgraph Plan["App Service Plan: plan-clyvo-care (F1)"]
-            WebApp["App Service\nwebapp-clyvo-care\n(Java 21)"]
-        end
-        WebApp -->|JDBC :1433| SQLServer["Azure SQL Server\nsqlserver-clyvo-care"]
-        SQLServer --> SQLDB[("SQL Database\nclyvo-caredb")]
-    end
-
-    GH["GitHub Actions\nJAVA-CHALLENGE-FIAP-2026"] -->|CI/CD deploy do .jar| WebApp
-```
 
 > Diagrama completo (draw.io): `docs/arquitetura-azure.drawio`
 
