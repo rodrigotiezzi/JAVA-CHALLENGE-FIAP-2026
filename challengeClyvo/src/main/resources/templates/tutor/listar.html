@@ -6,7 +6,7 @@
 
 <h1>Tutores</h1>
 
-<a th:href="@{/templates/web/tutor/novo}">+ Novo Tutor</a>
+<a th:href="@{/web/tutor/novo}">+ Novo Tutor</a>
 
 <table>
     <thead>
@@ -27,9 +27,9 @@
         <td th:text="${tutor.tel}">11999999999</td>
         <td th:text="${tutor.cpf}">12345678900</td>
         <td>
-            <a th:href="@{/templates/web/tutor/{id}/editar(id=${tutor.id})}">Editar</a>
+            <a th:href="@{/web/tutor/{id}/editar(id=${tutor.id})}">Editar</a>
 
-            <form th:action="@{/templates/web/tutor/{id}/deletar(id=${tutor.id})}" method="post" style="display:inline;">
+            <form th:action="@{/web/tutor/{id}/deletar(id=${tutor.id})}" method="post" style="display:inline;">
                 <button type="submit" onclick="return confirm('Confirma exclusão?')">Excluir</button>
             </form>
         </td>
@@ -39,11 +39,11 @@
 
 <!-- paginação simples -->
 <div th:if="${!tutores.first}">
-    <a th:href="@{/templates/web/tutor(pagina=${tutores.number - 1})}">Anterior</a>
+    <a th:href="@{/web/tutor(pagina=${tutores.number - 1})}">Anterior</a>
 </div>
 <span th:text="'Página ' + (${tutores.number} + 1) + ' de ' + ${tutores.totalPages}"></span>
 <div th:if="${!tutores.last}">
-    <a th:href="@{/templates/web/tutor(pagina=${tutores.number + 1})}">Próxima</a>
+    <a th:href="@{/web/tutor(pagina=${tutores.number + 1})}">Próxima</a>
 </div>
 </body>
 </html>

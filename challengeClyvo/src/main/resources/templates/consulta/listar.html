@@ -21,8 +21,8 @@
     </tbody>
 </table>
 
-<div th:if="${!consultas.first}"><a th:href="@{/templates/web/consulta(pagina=${consultas.number - 1})}">Anterior</a></div>
+<div th:if="${!consultas.first}"><a th:href="@{/web/consulta(pagina=${consultas.number - 1})}">Anterior</a></div>
 <span th:text="'Página ' + (${consultas.number} + 1) + ' de ' + ${consultas.totalPages}"></span>
-<div th:if="${!consultas.last}"><a th:href="@{/templates/web/consulta(pagina=${consultas.number + 1})}">Próxima</a></div>
+<div th:if="${!consultas.last}"><a th:href="@{/web/consulta(pagina=${consultas.number + 1})}">Próxima</a></div>
 </body>
 </html>

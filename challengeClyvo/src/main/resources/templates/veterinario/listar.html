@@ -6,7 +6,7 @@
 <div th:replace="~{fragments/layout :: menu}"></div>
 
 <h1>Veterinários</h1>
-<a th:href="@{/templates/web/veterinario/novo}">+ Novo Veterinário</a>
+<a th:href="@{/web/veterinario/novo}">+ Novo Veterinário</a>
 
 <table>
     <thead>
@@ -19,8 +19,8 @@
         <td th:text="${vet.area}">Área</td>
         <td th:text="${vet.crmv.uf} + ' ' + ${vet.crmv.numeroDeInscricao}">SP 12345</td>
         <td>
-            <a th:href="@{/templates/web/veterinario/{id}/editar(id=${vet.id})}">Editar</a>
-            <form th:action="@{/templates/web/veterinario/{id}/deletar(id=${vet.id})}" method="post" style="display:inline;">
+            <a th:href="@{/web/veterinario/{id}/editar(id=${vet.id})}">Editar</a>
+            <form th:action="@{/web/veterinario/{id}/deletar(id=${vet.id})}" method="post" style="display:inline;">
                 <button type="submit" onclick="return confirm('Confirma exclusão?')">Excluir</button>
             </form>
         </td>
@@ -28,8 +28,8 @@
     </tbody>
 </table>
 
-<div th:if="${!veterinarios.first}"><a th:href="@{/templates/web/veterinario(pagina=${veterinarios.number - 1})}">Anterior</a></div>
+<div th:if="${!veterinarios.first}"><a th:href="@{/web/veterinario(pagina=${veterinarios.number - 1})}">Anterior</a></div>
 <span th:text="'Página ' + (${veterinarios.number} + 1) + ' de ' + ${veterinarios.totalPages}"></span>
-<div th:if="${!veterinarios.last}"><a th:href="@{/templates/web/veterinario(pagina=${veterinarios.number + 1})}">Próxima</a></div>
+<div th:if="${!veterinarios.last}"><a th:href="@{/web/veterinario(pagina=${veterinarios.number + 1})}">Próxima</a></div>
 </body>
 </html>

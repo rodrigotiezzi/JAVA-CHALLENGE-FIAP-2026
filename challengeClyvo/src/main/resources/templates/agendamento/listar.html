@@ -5,7 +5,7 @@
 <div th:replace="~{fragments/layout :: menu}"></div>
 
 <h1>Agendamentos</h1>
-<a th:href="@{/templates/web/agendamento/novo}">+ Novo Agendamento</a>
+<a th:href="@{/web/agendamento/novo}">+ Novo Agendamento</a>
 
 <table>
     <thead>
@@ -21,18 +21,18 @@
         <td th:text="${ag.motivo}">Motivo</td>
         <td>
             <form th:if="${ag.status.name() == 'AGENDADO'}"
-                  th:action="@{/templates/web/agendamento/{id}/cancelar(id=${ag.id})}" method="post" style="display:inline;">
+                  th:action="@{/web/agendamento/{id}/cancelar(id=${ag.id})}" method="post" style="display:inline;">
                 <button type="submit" onclick="return confirm('Cancelar agendamento?')">Cancelar</button>
             </form>
             <a th:if="${ag.status.name() == 'AGENDADO'}"
-               th:href="@{/templates/web/consulta/agendamento/{id}/realizar(id=${ag.id})}">Realizar Consulta</a>
+               th:href="@{/web/consulta/agendamento/{id}/realizar(id=${ag.id})}">Realizar Consulta</a>
         </td>
     </tr>
     </tbody>
 </table>
 
-<div th:if="${!agendamentos.first}"><a th:href="@{/templates/web/agendamento(pagina=${agendamentos.number - 1})}">Anterior</a></div>
+<div th:if="${!agendamentos.first}"><a th:href="@{/web/agendamento(pagina=${agendamentos.number - 1})}">Anterior</a></div>
 <span th:text="'Página ' + (${agendamentos.number} + 1) + ' de ' + ${agendamentos.totalPages}"></span>
-<div th:if="${!agendamentos.last}"><a th:href="@{/templates/web/agendamento(pagina=${agendamentos.number + 1})}">Próxima</a></div>
+<div th:if="${!agendamentos.last}"><a th:href="@{/web/agendamento(pagina=${agendamentos.number + 1})}">Próxima</a></div>
 </body>
 </html>

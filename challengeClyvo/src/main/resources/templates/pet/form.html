@@ -45,13 +45,13 @@
     </div>
 
     <button type="submit">Salvar</button>
-    <a th:href="@{/templates/web/pet}">Cancelar</a>
+    <a th:href="@{/web/pet}">Cancelar</a>
 </form>
 
 <!-- Vincular tutor: só faz sentido depois que o pet já existe -->
 <div th:if="${modoEdicao}">
     <h2>Vincular Tutor</h2>
-    <form th:action="@{/templates/web/pet/{idPet}/tutor/{idTutor}(idPet=${id}, idTutor=0)}" method="post"
+    <form th:action="@{/web/pet/{idPet}/tutor/{idTutor}(idPet=${id}, idTutor=0)}" method="post"
           onsubmit="this.action=this.action.replace('/0', '/' + document.getElementById('idTutorVincular').value); return true;">
         <label for="idTutorVincular">ID do Tutor</label>
         <input type="number" id="idTutorVincular" name="idTutorVincular">
