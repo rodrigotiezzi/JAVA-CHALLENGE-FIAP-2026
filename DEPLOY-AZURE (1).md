@@ -4,9 +4,6 @@
 
 <img width="1393" height="755" alt="image" src="https://github.com/user-attachments/assets/d014b145-9cc2-42e2-970a-810e3278481c" />
 
-
-> Diagrama completo (draw.io): `docs/arquitetura-azure.drawio`
-
 ---
 
 ## Variáveis
