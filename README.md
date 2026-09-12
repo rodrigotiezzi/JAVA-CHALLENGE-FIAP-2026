@@ -23,7 +23,7 @@ O sistema permite cadastrar tutores, pets e veterinários, realizar agendamentos
 | Java       |   17   |
 | Spring Boot | 4.0.6 |
 | Spring Data JPA | 3.x |
-| Oracle Database | 19c |
+| Azure SQL Database | - |
 | Hibernate | 6.x |
 | SpringDoc OpenAPI (Swagger) | 2.8.8 |
 | Bean Validation | 3.x |
@@ -36,7 +36,7 @@ O sistema permite cadastrar tutores, pets e veterinários, realizar agendamentos
 O projeto segue a arquitetura em camadas:
 
 ```
-Controller → Service → Repository → Database (Oracle)
+Controller → Service → Repository → Database (Azure SQL)
 ```
 
 ```
@@ -217,16 +217,24 @@ erDiagram
 
 - Java 17+
 - Maven 3.x
-- Acesso ao banco Oracle (FIAP) - Mas pode mudar de acordo com sua preferencia no arquivo applicaion.properties
+- Acesso a um banco Azure SQL Database (ou SQL Server local via Docker)
 
 ### Configuração
 
-As credenciais do banco já estão configuradas em `src/main/resources/application.properties`:
+As credenciais do banco são lidas de variáveis de ambiente em `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
-spring.datasource.username=SEU_RM
-spring.datasource.password=SUA_SENHA
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+```
+
+Defina essas variáveis localmente (ou no Application Settings do Azure Web App / nos secrets do GitHub Actions) apontando para o seu Azure SQL Database, por exemplo:
+
+```
+SPRING_DATASOURCE_URL=jdbc:sqlserver://SEU_SERVIDOR.database.windows.net:1433;database=SEU_BANCO;encrypt=true;trustServerCertificate=false;loginTimeout=30
+SPRING_DATASOURCE_USERNAME=SEU_USUARIO
+SPRING_DATASOURCE_PASSWORD=SUA_SENHA
 ```
 
 ### Executando
@@ -336,7 +344,7 @@ docs/
 
 ## ✅ Requisitos Atendidos
 
-- [x] Persistência de dados com Oracle
+- [x] Persistência de dados com Azure SQL Database
 - [x] Relacionamentos JPA (`@ManyToMany`, `@ManyToOne`, `@OneToOne`, `@Embeddable`)
 - [x] Bean Validation (`@NotNull`, `@NotBlank`, `@Future`, `@Positive`, etc.)
 - [x] Paginação e ordenação de resultados

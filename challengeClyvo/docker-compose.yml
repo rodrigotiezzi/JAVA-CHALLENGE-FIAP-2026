@@ -1,33 +1,31 @@
 services:
 
-  oracle:
-    image: gvenzl/oracle-xe:21-slim
-    container_name: oracle-db
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-db
     environment:
-      ORACLE_PASSWORD: Challenge2026
-      ORACLE_DATABASE: CLYVOVET
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Challenge2026!"
     ports:
-      - "1521:1521"
+      - "1433:1433"
     volumes:
-      - oracle-data:/opt/oracle/oradata
+      - sqlserver-data:/var/opt/mssql
 
   api:
     build: .
     container_name: challenge-clyvo-api
     environment:
-      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle:1521/XEPDB1
-      SPRING_DATASOURCE_USERNAME: system
-      SPRING_DATASOURCE_PASSWORD: Challenge2026
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: oracle.jdbc.OracleDriver
-      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.OracleDialect
+      SPRING_DATASOURCE_URL: jdbc:sqlserver://sqlserver:1433;databaseName=CLYVOVET;encrypt=true;trustServerCertificate=true
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: "Challenge2026!"
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: "8080"
     ports:
       - "8080:8080"
     depends_on:
-      - oracle
+      - sqlserver
     restart: unless-stopped
 
 volumes:
-  oracle-data:
+  sqlserver-data:
