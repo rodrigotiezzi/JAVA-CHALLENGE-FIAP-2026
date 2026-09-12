@@ -12,26 +12,26 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
+    defaults:
+      run:
+        working-directory: ./challengeClyvo
+
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Set up Java version
       uses: actions/setup-java@v1
       with:
         java-version: '21'
-    
+
     - name: Build with Maven
-      run: mvn clean install
-      env:
-        SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
-        SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
-        SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+      run: mvn clean install -DskipTests
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
-      with: 
+      with:
         app-name: 'webapp-clyvo-care'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_72174a094fff48cb82ccd3935aff0284 }}
-        package: '${{ github.workspace }}/target/*.jar'
+        package: '${{ github.workspace }}/challengeClyvo/target/*.jar'
