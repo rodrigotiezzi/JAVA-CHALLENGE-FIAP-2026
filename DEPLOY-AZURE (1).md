@@ -29,7 +29,7 @@ SQL_ADMIN_PASSWORD="FIAP@2tdspo2026"
 
 # GitHub
 GITHUB_REPO_NAME="rodrigotiezzi/JAVA-CHALLENGE-FIAP-2026"
-BRANCH="main"
+BRANCH="master"
 ```
 
 ---
