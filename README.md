@@ -20,7 +20,7 @@ O sistema permite cadastrar tutores, pets e veterinários, realizar agendamentos
 
 | Tecnologia | Versão |
 |------------|--------|
-| Java       |   17   |
+| Java       |   21   |
 | Spring Boot | 4.0.6 |
 | Spring Data JPA | 3.x |
 | Azure SQL Database | - |
@@ -215,7 +215,7 @@ erDiagram
 
 ### Pré-requisitos
 
-- Java 17+
+- Java 21+
 - Maven 3.x
 - Acesso a um banco Azure SQL Database (ou SQL Server local via Docker)
 
