@@ -22,7 +22,7 @@ RUNTIME="JAVA:21-java21"
 SQL_SERVER_NAME="sqlserver-clyvo-care"
 SQL_DB_NAME="clyvo-caredb"
 SQL_ADMIN_USER="dbadmin"
-SQL_ADMIN_PASSWORD="<definida localmente / no Azure Key Vault, nunca commitada>"
+SQL_ADMIN_PASSWORD="FIAP@2tdspo2026"
 
 # GitHub
 GITHUB_REPO_NAME="rodrigotiezzi/JAVA-CHALLENGE-FIAP-2026"
@@ -43,11 +43,11 @@ az group create --name rg-clyvo-care --location "southafricanorth"
 
 ```bash
 az sql server create \
-  --name sqlserver-clyvo-care \
-  --resource-group rg-clyvo-care \
-  --location southafricanorth \
-  --admin-user dbadmin \
-  --admin-password SUA_SENHA_AQUI
+  --name "sqlserver-clyvo-care" \
+  --resource-group "rg-clyvo-care" \
+  --location "southafricanorth" \
+  --admin-user "dbadmin" \
+  --admin-password "FIAP@2tdspo2026"
 
 az sql db create \
   --resource-group rg-clyvo-care \
@@ -96,7 +96,7 @@ az webapp config appsettings set \
   --resource-group "rg-clyvo-care" \
   --settings \
     SPRING_DATASOURCE_USERNAME="dbadmin" \
-    SPRING_DATASOURCE_PASSWORD="SUA_SENHA_AQUI" \
+    SPRING_DATASOURCE_PASSWORD="FIAP@2tdspo2026" \
     SPRING_DATASOURCE_URL="jdbc:sqlserver://sqlserver-clyvo-care.database.windows.net:1433;database=clyvo-caredb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
 
 az webapp restart --name webapp-clyvo-care --resource-group rg-clyvo-care
@@ -118,8 +118,16 @@ Esse comando já cria o workflow `.yml` em `.github/workflows/` e o secret do pu
 Dentro do repositório do GitHub, vá em Settings -> Secrets and variables -> Actions.
 Clique em New repository secret.
 Adicione as 3 variáveis (pegue os mesmos valores usados na Azure CLI):
-SPRING_DATASOURCE_URL -> jdbc:sqlserver://sqlserver-clyvo-caredatabase.windows.net:1433;database=clyvo-caredb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+SPRING_DATASOURCE_URL -> jdbc:sqlserver://sqlserver-clyvo-care.database.windows.net:1433;database=clyvo-caredb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 SPRING_DATASOURCE_USERNAME -> dbadmin
-SPRING_DATASOURCE_PASSWORD -> SUA_SENHA_AQUI
+SPRING_DATASOURCE_PASSWORD -> FIAP@2tdspo2026
 
+
+Agora vamos fazer login! 
+Se so entrarmos na pagina, vamos ter um tela em branco. 
+É necessario digitar na url "/web/login"
+EX:https://webapp-clyvo-care.azurewebsites.net/web/login
+
+O usuario é admin 
+e a senha é admin123
 
