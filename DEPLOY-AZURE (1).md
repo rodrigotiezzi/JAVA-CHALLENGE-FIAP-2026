@@ -1,5 +1,24 @@
 # ☁️ Deploy na Azure — Clyvo Care
 
+## 📌 Descrição da Solução
+
+A ideia principal do **Clyvo Care** é uma **coleira inteligente para pets** que, por meio da leitura de batimentos cardíacos e outros sinais vitais do animal, ajuda o tutor a entender o estado emocional e físico do pet — se está feliz, triste, estressado ou com fome — permitindo agir antes que isso vire um problema de saúde.
+
+Para sustentar essa proposta, foi desenvolvida uma **API RESTful em Java com Spring Boot**, com persistência em Azure SQL Database, que funciona como o back-end de gestão da solução: centraliza o cadastro de **tutores**, **pets** e **veterinários**, permite criar e gerenciar **agendamentos** de consultas (com controle de status: agendado, realizado ou cancelado) — inclusive os originados a partir de alertas da coleira — e registrar o **histórico clínico** de cada atendimento (diagnóstico, tratamento e observações).
+
+A solução expõe endpoints REST documentados via Swagger/OpenAPI, com suporte a busca por parâmetros, paginação e ordenação de resultados, validação de dados de entrada e tratamento global de exceções — cobrindo todo o fluxo de uma clínica veterinária, do cadastro do tutor até o encerramento da consulta.
+
+## 💼 Descrição dos Benefícios para o Negócio
+
+- **Organização centralizada**: elimina planilhas e controles manuais, unificando tutores, pets, veterinários e agendamentos em um único sistema.
+- **Redução de erros e retrabalho**: validações automáticas e regras de negócio (ex.: impedir agendamentos conflitantes, exigir dados obrigatórios) diminuem falhas de cadastro e de rotina operacional.
+- **Rastreabilidade do histórico clínico**: cada consulta fica vinculada ao seu agendamento, com diagnóstico, tratamento e observações, permitindo consultar rapidamente o histórico de saúde de um pet.
+- **Agilidade no atendimento**: buscas por nome, CPF, espécie, área de atuação ou status de agendamento tornam a rotina da clínica mais rápida para recepcionistas e veterinários.
+- **Escalabilidade e disponibilidade**: hospedagem em nuvem (Azure App Service + Azure SQL Database) permite crescimento do volume de dados e de acessos sem necessidade de infraestrutura própria.
+- **Integração facilitada**: por ser uma API REST documentada (Swagger) e com coleção Postman disponível, o sistema pode ser integrado a outros sistemas (site, app mobile, painéis administrativos) com baixo esforço.
+
+---
+
 ## Arquitetura
 
 <img width="1393" height="755" alt="image" src="https://github.com/user-attachments/assets/d014b145-9cc2-42e2-970a-810e3278481c" />
